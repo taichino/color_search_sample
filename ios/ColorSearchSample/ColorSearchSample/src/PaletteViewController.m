@@ -8,25 +8,19 @@
 
 #import "PaletteViewController.h"
 #import "AFNetWorking.h"
+#import "PhotoListViewController.h"
 
 
 @implementation PaletteViewController
 
 - (void)colorSelected:(UIButton *)sender {
-	UIColor *color = sender.backgroundColor;
-	NSLog(@"%@", color);
-
-	NSURL *url = [NSURL URLWithString:@"http://httpbin.org/ip"];
-	NSURLRequest *request = [NSURLRequest requestWithURL:url];
-
-	AFJSONRequestOperation *operation =
-		[AFJSONRequestOperation
-			JSONRequestOperationWithRequest:request
-									success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-			NSLog(@"IP Address: %@", [JSON valueForKeyPath:@"origin"]);
-		} failure:nil];
-
-	[operation start];	
+	[self performSegueWithIdentifier:@"push_photolist" sender:sender];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender {
+	PhotoListViewController *vc = segue.destinationViewController;
+	vc.targetColor = sender.backgroundColor;
+}
+
 
 @end
