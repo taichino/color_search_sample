@@ -18,7 +18,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	NSLog(@"%@", self.targetColor);
 
 	NSURL *url = [NSURL URLWithString:@"http://localhost:8000/mono/"];
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -28,9 +27,15 @@
 			JSONRequestOperationWithRequest:request
 									success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 				NSArray *photoList = JSON;
-				for (NSString *path in photoList) {
-					NSLog(@"%@", path);
-				}
+				[photoList enumerateObjectsUsingBlock:^(NSString *path, NSUInteger idx, BOOL *stop) {
+						int row = idx / 3, col = idx % 3;
+						int x = col * 100;
+						int y = row * 100;
+						NSString *imageURL = [NSString stringWithFormat:@"http://localhost:8000%@", path];
+						UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, 100, 100)];
+						[imageView setImageWithURL:[NSURL URLWithString:imageURL]];
+						[self.view addSubview:imageView];
+					}];
 		} failure:nil];
 
 	[operation start];		
