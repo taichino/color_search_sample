@@ -37,5 +37,4 @@ class Command(BaseCommand):
 
                 index += 1
 
-        
-        
+        print 'Done...'
