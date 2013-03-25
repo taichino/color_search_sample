@@ -13,6 +13,14 @@ class Color(models.Model):
     G = models.IntegerField(default=0)
     B = models.IntegerField(default=0)
 
+    @staticmethod
+    def get_nearest(R, G, B):
+        R = int((R + 8) / 16) * 16
+        G = int((G + 8) / 16) * 16
+        B = int((B + 8) / 16) * 16
+
+        return Color.objects.get(R=R, G=G, B=B)
+
 
 class ImageManager(models.Manager):
     def get_or_create_or_update(self, url, num):
