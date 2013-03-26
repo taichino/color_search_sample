@@ -10,6 +10,9 @@ class Command(BaseCommand):
         print 'Preparing palette for each images...'
 
         for image in Image.objects.all():
+            if image.dominant_color and len(image.colors.all()) > 0:
+                continue
+
             colors = modified_mediancut(image.path, 5)
             dominant_color = Color.get_nearest(*colors[0])
             image.dominant_color = dominant_color
