@@ -22,6 +22,8 @@
 		611B5D0C16FD128900F93B58 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 611B5D0B16FD128900F93B58 /* SystemConfiguration.framework */; };
 		611B5D0E16FD12AD00F93B58 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 611B5D0D16FD12AD00F93B58 /* MobileCoreServices.framework */; };
 		611B5D1116FD468E00F93B58 /* PhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 611B5D1016FD468E00F93B58 /* PhotoListViewController.m */; };
+		611B5D1417016D1A00F93B58 /* PaletteColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 611B5D1317016D1A00F93B58 /* PaletteColorView.m */; };
+		611B5D17170222CE00F93B58 /* UIColor+Gradation.m in Sources */ = {isa = PBXBuildFile; fileRef = 611B5D16170222CE00F93B58 /* UIColor+Gradation.m */; };
 		6129307116FCFAE900BEF10E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6129307016FCFAE900BEF10E /* UIKit.framework */; };
 		6129307316FCFAE900BEF10E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6129307216FCFAE900BEF10E /* Foundation.framework */; };
 		6129307516FCFAE900BEF10E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6129307416FCFAE900BEF10E /* CoreGraphics.framework */; };
@@ -63,6 +65,10 @@
 		611B5D0D16FD12AD00F93B58 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		611B5D0F16FD468E00F93B58 /* PhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoListViewController.h; path = src/PhotoListViewController.h; sourceTree = "<group>"; };
 		611B5D1016FD468E00F93B58 /* PhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoListViewController.m; path = src/PhotoListViewController.m; sourceTree = "<group>"; };
+		611B5D1217016D1A00F93B58 /* PaletteColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaletteColorView.h; path = src/PaletteColorView.h; sourceTree = "<group>"; };
+		611B5D1317016D1A00F93B58 /* PaletteColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaletteColorView.m; path = src/PaletteColorView.m; sourceTree = "<group>"; };
+		611B5D15170222CE00F93B58 /* UIColor+Gradation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Gradation.h"; path = "src/UIColor+Gradation.h"; sourceTree = "<group>"; };
+		611B5D16170222CE00F93B58 /* UIColor+Gradation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Gradation.m"; path = "src/UIColor+Gradation.m"; sourceTree = "<group>"; };
 		6129306C16FCFAE900BEF10E /* ColorSearchSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorSearchSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6129307016FCFAE900BEF10E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6129307216FCFAE900BEF10E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -104,6 +110,10 @@
 				611B5CAD16FD0ED500F93B58 /* PaletteViewController.m */,
 				611B5D0F16FD468E00F93B58 /* PhotoListViewController.h */,
 				611B5D1016FD468E00F93B58 /* PhotoListViewController.m */,
+				611B5D1217016D1A00F93B58 /* PaletteColorView.h */,
+				611B5D1317016D1A00F93B58 /* PaletteColorView.m */,
+				611B5D15170222CE00F93B58 /* UIColor+Gradation.h */,
+				611B5D16170222CE00F93B58 /* UIColor+Gradation.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -277,6 +287,8 @@
 				611B5D0716FD105100F93B58 /* AFXMLRequestOperation.m in Sources */,
 				611B5D0816FD105100F93B58 /* UIImageView+AFNetworking.m in Sources */,
 				611B5D1116FD468E00F93B58 /* PhotoListViewController.m in Sources */,
+				611B5D1417016D1A00F93B58 /* PaletteColorView.m in Sources */,
+				611B5D17170222CE00F93B58 /* UIColor+Gradation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

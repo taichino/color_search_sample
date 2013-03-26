@@ -7,6 +7,7 @@
 //
 
 #import "PaletteView.h"
+#import "PaletteColorView.h"
 
 @implementation PaletteView
 
@@ -17,23 +18,32 @@
 	
 	NSArray *colors = @[
 		COLOR(0, 0, 0),
-		COLOR(157, 157, 157),
-	    COLOR(255, 255, 255), 
+			 COLOR(157, 157, 157),
+			 COLOR(255, 255, 255),
+			 COLOR(190, 38, 51),
+			 COLOR(224, 111, 139),
+			 COLOR(73, 60, 43),
+			 COLOR( 164, 100, 34)
 	];
 
 	[colors enumerateObjectsUsingBlock:^(UIColor *color, NSUInteger idx, BOOL *stop) {
-			UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-			int row = idx / 3, col = idx % 3;
-			int x = col * 100, y = row * 100;
-			int w = 100, h = 100;
-			btn.frame = CGRectMake(x, y, w, h);
-			btn.backgroundColor = color;
+
+			int row = idx / 2;
+			int col = idx % 2;
+			int y_margin = 50;
+			int w = 50;
+			int h = 50;
+			int x = (160 - w) / 2 + ((col % 2) ? 160 : 0);
+			int y = row * 100 + y_margin;
+			PaletteColorView *pcv = [[[PaletteColorView alloc]
+										 initWithFrame:CGRectMake(x, y, w, h)
+											 baseColor:color] autorelease];
 
 			// paletteSelected is implemented in ViewController
-			[btn addTarget:nil
-					action:@selector(colorSelected:)
-				 forControlEvents:UIControlEventTouchUpInside];
-			[self addSubview:btn];
+			// [btn addTarget:nil
+			// 		action:@selector(colorSelected:)
+			// 	 forControlEvents:UIControlEventTouchUpInside];
+			[self addSubview:pcv];
 		}];	
 }
 
