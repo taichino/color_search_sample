@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import copy
@@ -151,7 +150,7 @@ def mediancut_apply(histo, vbox):
     return [vbox1, vbox2]
 
 
-def median_cut2(pixs, maxColors):
+def modified_mediancut(pixs, maxColors):
     if isinstance(pixs, unicode) or isinstance(pixs, str):
         import Image
         img = Image.open(pixs)
@@ -191,7 +190,7 @@ def main():
     import Image
     img = Image.open('nbc_logo.png')
     target_color_num = 9
-    print median_cut2(list(img.getdata()), target_color_num)
+    print modified_mediancut(list(img.getdata()), target_color_num)
 
     
 if __name__ == '__main__':

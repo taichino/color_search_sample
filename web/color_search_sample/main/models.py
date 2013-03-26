@@ -58,5 +58,6 @@ class Image(models.Model):
     orig_url = models.TextField()
     width = models.IntegerField(default=0)
     height = models.IntegerField(default=0)
+    dominant_color = models.ForeignKey(Color, related_name='dominant_color', blank=True, null=True)
     colors = models.ManyToManyField(Color)
 

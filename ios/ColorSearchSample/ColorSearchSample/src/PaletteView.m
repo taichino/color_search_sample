@@ -17,8 +17,8 @@
 	
 	NSArray *colors = @[
 		COLOR(0, 0, 0),
-			 COLOR(157, 157, 157),
-			 COLOR(255, 255, 255)
+		COLOR(157, 157, 157),
+	    COLOR(255, 255, 255), 
 	];
 
 	[colors enumerateObjectsUsingBlock:^(UIColor *color, NSUInteger idx, BOOL *stop) {
