@@ -7,8 +7,8 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#include <dispatch/dispatch.h>
 #import "PaletteColorView.h"
+#import "PaletteColorCircleView.h"
 #import "UIColor+Gradation.h"
 
 @interface PaletteColorView (Private)
@@ -20,87 +20,77 @@
 
 @implementation PaletteColorView
 
-- (id)initWithFrame:(CGRect)frame baseColor:(UIColor *)baseColor center:(BOOL)center {
+- (id)initWithFrame:(CGRect)frame baseColor:(UIColor *)baseColor {
     self = [super initWithFrame:frame];
     if (self) {
-		self.center = center;
 		self.baseColor = baseColor;
+		NSMutableArray *gradationViews = [NSMutableArray array];
 		
-		CGFloat radius = frame.size.width / 2;
-		self.layer.cornerRadius = radius;
-		self.backgroundColor = self.baseColor;
 		NSArray *gradationColors = [self.baseColor gradationColors];
-
-		if (self.center) {
-			self.centerCircle = [[[PaletteColorView alloc]
-												  initWithFrame:self.bounds
-													  baseColor:self.baseColor
-														 center:NO] autorelease];
-			[self addSubview:self.centerCircle];
+		PaletteColorCircleView *centerCircle = [[[PaletteColorCircleView alloc] initWithFrame:self.bounds
+																						color:self.baseColor] autorelease];
+		[self addSubview:centerCircle];
+		[gradationViews addObject:centerCircle];
 			
-			NSMutableArray *gradationViews = [NSMutableArray array];
-			for (UIColor *color in gradationColors) {
-				PaletteColorView *view = [[[PaletteColorView alloc]
-											  initWithFrame:self.bounds
-												  baseColor:color
-													 center:NO] autorelease];
-				[self insertSubview:view belowSubview:self.centerCircle];
-				[gradationViews addObject:view];
-			}
-			self.gradationViews = gradationViews;
+		for (UIColor *color in gradationColors) {
+			PaletteColorCircleView *view = [[[PaletteColorCircleView alloc] initWithFrame:self.bounds
+																					color:color] autorelease];
+			[self insertSubview:view belowSubview:centerCircle];
+			[gradationViews addObject:view];
 		}
+		self.gradationViews = gradationViews;
+
     }
     return self;
 }
 
 - (void)dealloc {
 	self.baseColor = nil;
-	self.centerCircle = nil;
 	self.gradationViews = nil;
 	[super dealloc];
 }
 
 
 #pragma mark -
-#pragma mark - UIView
+#pragma mark - UIResponder
 #pragma mark -
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	NSLog(@"began");
-	
-	if (!self.center) {
-		[self.superview touchesBegan:touches withEvent:event];
-		return;
-	}
-
 	[self _expand];
 }
 
-
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	UITouch *touch = [touches anyObject];
+	for (UIView *subview in self.gradationViews) {
+		if ([subview pointInside:[touch locationInView:subview] withEvent:event]) {
+			subview.layer.shadowOpacity = 0.3;
+			subview.layer.shadowOffset = CGSizeMake(0, 4.0);
+		}
+		else {
+			subview.layer.shadowOpacity = 0.0;
+		}
+	}
+}
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	NSLog(@"end");
-	if (!self.center) {
-		[self.superview touchesEnded:touches withEvent:event];
-		return;
-	}
-
+	NSLog(@"ended");
 	[self _shrink];
 }
 
-#pragma mark
-#pragma mark Private methods
-#pragma mark
+#pragma mark -
+#pragma mark - Private methods
+#pragma mark -
 
 - (void)_expand {
 	int startX = CGRectGetMidX(self.bounds);
 	int startY = CGRectGetMidY(self.bounds);
-	int R = 60;
-	int relayR = 80;
+	int R = 50;
+	int relayR = 65;
 	int viewCount = [self.gradationViews count];
-	for (int i = 0; i < viewCount; i++) {
+	for (int i = 1; i < viewCount; i++) {
 		UIView *view = [self.gradationViews objectAtIndex:i];
-		CGFloat rad = i * 2 * M_PI / (float)viewCount;
+		CGFloat rad = i * 2 * M_PI / (float)(viewCount - 1);
 		int targetX = startX + R * cosf(rad);
 		int targetY = startY - R * sinf(rad);
 		int relayX  = startX + relayR * cosf(rad);
@@ -126,9 +116,9 @@
 	
 	int relayR = 10;
 	int viewCount = [self.gradationViews count];
-	for (int i = 0; i < viewCount; i++) {
+	for (int i = 1; i < viewCount; i++) {
 		UIView *view = [self.gradationViews objectAtIndex:i];
-		CGFloat rad = i * 2 * M_PI / (float)viewCount;
+		CGFloat rad = i * 2 * M_PI / (float)(viewCount - 1);
 		int startX = CGRectGetMidX(view.frame);
 		int startY = CGRectGetMidY(view.frame);
 		int relayX = startX + relayR * cosf(rad);

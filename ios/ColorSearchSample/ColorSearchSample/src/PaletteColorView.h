@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PaletteColorCircleView.h"
+
 
 @interface PaletteColorView : UIView
 
 @property (nonatomic, retain) UIColor *baseColor;
-@property (nonatomic, retain) PaletteColorView *centerCircle;
 @property (nonatomic, retain) NSArray *gradationViews;
-@property (nonatomic, assign) BOOL center;
 
-- (id)initWithFrame:(CGRect)frame baseColor:(UIColor *)baseColor center:(BOOL)center;
+- (id)initWithFrame:(CGRect)frame baseColor:(UIColor *)baseColor;
 
 @end

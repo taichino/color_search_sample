@@ -37,14 +37,13 @@
 			int row = idx / 2;
 			int col = idx % 2;
 			int y_margin = 50;
-			int w = 50;
-			int h = 50;
+			int w = 40;
+			int h = 40;
 			int x = (160 - w) / 2 + ((col % 2) ? 160 : 0);
 			int y = row * 100 + y_margin;
 			PaletteColorView *pcv = [[[PaletteColorView alloc]
 										 initWithFrame:CGRectMake(x, y, w, h)
-											 baseColor:color
-												center:YES] autorelease];
+											 baseColor:color] autorelease];
 
 			// paletteSelected is implemented in ViewController
 			// [btn addTarget:nil
