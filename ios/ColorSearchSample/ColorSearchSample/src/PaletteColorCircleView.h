@@ -11,6 +11,7 @@
 @interface PaletteColorCircleView : UIView
 
 @property (nonatomic, assign) BOOL selected;
+@property (nonatomic, retain) UIColor *color;
 - (id)initWithFrame:(CGRect)frame color:(UIColor *)color;
 
 @end

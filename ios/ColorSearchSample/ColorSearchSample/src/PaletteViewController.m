@@ -9,18 +9,40 @@
 #import "PaletteViewController.h"
 #import "AFNetWorking.h"
 #import "PhotoListViewController.h"
-
+#import "PaletteView.h"
+#import "Common.h"
 
 @implementation PaletteViewController
 
-- (void)colorSelected:(UIButton *)sender {
-	[self performSegueWithIdentifier:@"push_photolist" sender:sender];
+- (id)initWithCoder:(NSCoder *)decoder {
+	self = [super initWithCoder:decoder];
+	if (self) {
+		self.title = @"Select Color";
+		[[NSNotificationCenter defaultCenter]
+			addObserverForName:kColorSelectedNotification
+						object:nil
+						 queue:nil
+					usingBlock:^(NSNotification *notif) {
+				[self performSegueWithIdentifier:@"push_photolist"
+										  sender:notif.userInfo[@"color"]];
+			}];
+	}
+	return self;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender {
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[super dealloc];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIColor *)color {
 	PhotoListViewController *vc = segue.destinationViewController;
-	vc.targetColor = sender.backgroundColor;
+	vc.targetColor = color;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[(PaletteView *)self.view shrinkAll];
+}
 
 @end

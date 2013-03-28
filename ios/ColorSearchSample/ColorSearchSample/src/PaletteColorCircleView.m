@@ -18,6 +18,7 @@
 		self.layer.cornerRadius = radius;
 		self.layer.shadowOffset = CGSizeMake(0, 4.0);
 		self.backgroundColor = color;
+		self.color = color;
 
 		[self addObserver:self forKeyPath:@"selected" options:NSKeyValueObservingOptionNew context:nil];
     }
@@ -26,6 +27,7 @@
 
 - (void)dealloc {
 	[self removeObserver:self forKeyPath:@"selected"];
+	self.color = nil;
 	[super dealloc];
 }
 

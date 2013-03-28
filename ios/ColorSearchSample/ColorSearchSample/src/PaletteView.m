@@ -45,12 +45,16 @@
 										 initWithFrame:CGRectMake(x, y, w, h)
 											 baseColor:color] autorelease];
 
-			// paletteSelected is implemented in ViewController
-			// [btn addTarget:nil
-			// 		action:@selector(colorSelected:)
-			// 	 forControlEvents:UIControlEventTouchUpInside];
 			[self addSubview:pcv];
 		}];	
+}
+
+- (void)shrinkAll {
+	for (UIView *view in [self subviews]) {
+		if ([view isKindOfClass:[PaletteColorView class]]) {
+			[(PaletteColorView *)view shrink];
+		}
+	}
 }
 
 @end

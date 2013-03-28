@@ -25,7 +25,7 @@
 	AFJSONRequestOperation *operation =
 		[AFJSONRequestOperation
 			JSONRequestOperationWithRequest:request
-									success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+			success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 				NSArray *photoList = JSON;
 				[photoList enumerateObjectsUsingBlock:^(NSString *path, NSUInteger idx, BOOL *stop) {
 						int row = idx / 3, col = idx % 3;
@@ -36,7 +36,10 @@
 						[imageView setImageWithURL:[NSURL URLWithString:imageURL]];
 						[self.view addSubview:imageView];
 					}];
-		} failure:nil];
+			}
+		    failure:^( NSURLRequest *request , NSHTTPURLResponse *response , NSError *error , id JSON ) {
+				NSLog(@"failed");
+			}];
 
 	[operation start];		
 }

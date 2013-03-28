@@ -7,6 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import "Common.h"
 #import "PaletteColorView.h"
 #import "PaletteColorCircleView.h"
 #import "UIColor+Gradation.h"
@@ -15,6 +16,7 @@
 
 - (void)_expand;
 - (void)_shrink;
+- (void)_go;
 
 @end
 
@@ -27,14 +29,16 @@
 		NSMutableArray *gradationViews = [NSMutableArray array];
 		
 		NSArray *gradationColors = [self.baseColor gradationColors];
-		PaletteColorCircleView *centerCircle = [[[PaletteColorCircleView alloc] initWithFrame:self.bounds
-																						color:self.baseColor] autorelease];
+		PaletteColorCircleView *centerCircle =
+			[[[PaletteColorCircleView alloc] initWithFrame:self.bounds
+													 color:self.baseColor] autorelease];
 		[self addSubview:centerCircle];
 		[gradationViews addObject:centerCircle];
 			
 		for (UIColor *color in gradationColors) {
-			PaletteColorCircleView *view = [[[PaletteColorCircleView alloc] initWithFrame:self.bounds
-																					color:color] autorelease];
+			PaletteColorCircleView *view =
+				[[[PaletteColorCircleView alloc] initWithFrame:self.bounds
+														 color:color] autorelease];
 			[self insertSubview:view belowSubview:centerCircle];
 			[gradationViews addObject:view];
 		}
@@ -48,6 +52,7 @@
 	self.baseColor = nil;
 	self.gradationViews = nil;
 	self.selectedCircleView = nil;
+	self.animView = nil;
 	[super dealloc];
 }
 
@@ -65,13 +70,18 @@
 	}
 }
 
+- (void)shrink {
+	if (self.selectedCircleView) {
+		[self _shrink];
+	}
+}
+
 
 #pragma mark -
 #pragma mark - UIResponder
 #pragma mark -
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	NSLog(@"began");
 	[self _expand];
 }
 
@@ -86,10 +96,9 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	NSLog(@"ended");
-
 	if (self.selectedCircleView) {
 		NSLog(@"selected");
+		[self _go];
 	}
 	else {
 		[self _shrink];
@@ -97,8 +106,44 @@
 }
 
 #pragma mark -
-#pragma mark - Private methods
+#pragma mark - Animations
 #pragma mark -
+
+- (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)flag {
+	[self.animView removeFromSuperview];
+	self.animView = nil;
+
+	[[NSNotificationCenter defaultCenter]
+			postNotificationName:kColorSelectedNotification
+						  object:self
+						userInfo:@{@"color":self.selectedCircleView.color}];	
+}
+
+- (void)_go {
+	if (!self.selectedCircleView) return;
+
+	self.animView = [[[UIView alloc] initWithFrame:self.selectedCircleView.frame] autorelease];
+	self.animView.backgroundColor = self.selectedCircleView.color;
+	[self addSubview:self.animView];
+
+	CABasicAnimation *sizeAnimation = [CABasicAnimation animationWithKeyPath:@"bounds.size"];
+	CGSize initialSize = self.animView.bounds.size;	
+	sizeAnimation.duration = 0.3;
+	CGFloat factor = 20;
+	[sizeAnimation setToValue:[NSValue valueWithCGSize:CGSizeMake(initialSize.width * factor,
+																  initialSize.height * factor)]];
+
+	CABasicAnimation *opacAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+	opacAnimation.duration = 0.3;
+	[opacAnimation setToValue:[NSNumber numberWithFloat:0.1]];
+
+	CAAnimationGroup *group = [CAAnimationGroup animation];
+	group.duration = 0.3;
+	group.delegate = self;
+	[group setAnimations:[NSArray arrayWithObjects:opacAnimation, sizeAnimation, nil]];
+	
+	[self.animView.layer addAnimation:group forKey:nil];
+}
 
 - (void)_expand {
 	int startX = CGRectGetMidX(self.bounds);
@@ -114,17 +159,17 @@
 		int relayX  = startX + relayR * cosf(rad);
 		int relayY  = startY - relayR * sinf(rad);
 
-		CAKeyframeAnimation *posAnim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-		posAnim.duration = 0.3;
+		CAKeyframeAnimation *posAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+		posAnimation.duration = 0.3;
 		CGMutablePathRef path = CGPathCreateMutable();
 		CGPathMoveToPoint(path, NULL, startX, startY);
 		CGPathAddLineToPoint(path, NULL, relayX, relayY);
 		CGPathAddLineToPoint(path, NULL, targetX, targetY);
-		posAnim.path = path;
+		posAnimation.path = path;
 		CGPathRelease(path);
 
 		view.layer.position = CGPointMake(targetX, targetY);
-		[view.layer addAnimation:posAnim forKey:nil];
+		[view.layer addAnimation:posAnimation forKey:nil];
 	}
 }
 
@@ -142,18 +187,19 @@
 		int relayX = startX + relayR * cosf(rad);
 		int relayY = startY - relayR * sinf(rad);
 
-		CAKeyframeAnimation *posAnim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-		posAnim.duration = 0.3;
+		CAKeyframeAnimation *posAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+		posAnimation.duration = 0.3;
 		CGMutablePathRef path = CGPathCreateMutable();
 		CGPathMoveToPoint(path, NULL, startX, startY);
 		CGPathAddLineToPoint(path, NULL, relayX, relayY);
 		CGPathAddLineToPoint(path, NULL, targetX, targetY);
-		posAnim.path = path;
+		posAnimation.path = path;
 		CGPathRelease(path);
 
 		view.layer.position = CGPointMake(targetX, targetY);
-		[view.layer addAnimation:posAnim forKey:nil];
-	}	
+		[view.layer addAnimation:posAnimation forKey:nil];
+	}
+	self.selectedCircleView = nil;
 }
 
 @end

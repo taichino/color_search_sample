@@ -10,7 +10,7 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns(
     '',
     (r'^media/(?P<path>.*)$', 'django.views.static.serve',
-     {'document_root': settings.MEDIA_ROOT}),
+     {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
     
     url(r'', include('main.urls'))
 )
