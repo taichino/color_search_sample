@@ -11,7 +11,7 @@
 @implementation UIColor (Gradation)
 
 - (NSArray *)gradationColors {
-	const NSInteger NUM = 4;
+	const NSInteger NUM = 3;
 	
 	CGFloat hue = 0, saturation = 0, brightness = 0, alpha = 0;
 	BOOL res = [self getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
@@ -20,18 +20,19 @@
 	if (brightness == 0) brightness = 0.0001;
 	if (saturation == 0) saturation = 0.0001;
 
-	// shift brightness to make darker colors	
+	// shifting brightness to make darker colors	
 	NSMutableArray *colors = [NSMutableArray array];
 	for (CGFloat b = 0; b < brightness; b += brightness / NUM) {
 		UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:b alpha:alpha];
 		[colors addObject:color];
 	}
 
-	// shift saturation to make light colors	
+	// shifting saturation to make light colors	
 	for (CGFloat s = saturation; s >= 0; s -= saturation / NUM) {
 		UIColor *color = [UIColor colorWithHue:hue saturation:s brightness:brightness alpha:alpha];
 		[colors addObject:color];
 	}
+	[colors removeObjectAtIndex:0];
 	
 	return colors;
 }

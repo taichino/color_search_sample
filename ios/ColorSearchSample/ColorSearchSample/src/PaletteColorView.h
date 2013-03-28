@@ -11,8 +11,10 @@
 @interface PaletteColorView : UIView
 
 @property (nonatomic, retain) UIColor *baseColor;
-@property (nonatomic, retain) NSArray *gradationColors;
+@property (nonatomic, retain) PaletteColorView *centerCircle;
+@property (nonatomic, retain) NSArray *gradationViews;
+@property (nonatomic, assign) BOOL center;
 
-- (id)initWithFrame:(CGRect)frame baseColor:(UIColor *)baseColor;
+- (id)initWithFrame:(CGRect)frame baseColor:(UIColor *)baseColor center:(BOOL)center;
 
 @end

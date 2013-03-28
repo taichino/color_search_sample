@@ -17,13 +17,19 @@
 	[super awakeFromNib];
 	
 	NSArray *colors = @[
-		COLOR(0, 0, 0),
-			 COLOR(157, 157, 157),
-			 COLOR(255, 255, 255),
+		COLOR(157, 157, 157),
 			 COLOR(190, 38, 51),
 			 COLOR(224, 111, 139),
 			 COLOR(73, 60, 43),
-			 COLOR( 164, 100, 34)
+			 COLOR(164, 100, 34),
+			 COLOR(235, 137, 49),
+			 COLOR(247, 226, 107),
+			 COLOR(47, 72, 78),
+			 COLOR(68, 137, 26),
+			 COLOR(163, 206, 39),
+			 COLOR(27, 38, 50),
+			 COLOR(0, 87, 132),
+			 COLOR(49, 162, 242)
 	];
 
 	[colors enumerateObjectsUsingBlock:^(UIColor *color, NSUInteger idx, BOOL *stop) {
@@ -37,7 +43,8 @@
 			int y = row * 100 + y_margin;
 			PaletteColorView *pcv = [[[PaletteColorView alloc]
 										 initWithFrame:CGRectMake(x, y, w, h)
-											 baseColor:color] autorelease];
+											 baseColor:color
+												center:YES] autorelease];
 
 			// paletteSelected is implemented in ViewController
 			// [btn addTarget:nil
