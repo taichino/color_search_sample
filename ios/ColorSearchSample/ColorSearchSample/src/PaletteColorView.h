@@ -14,6 +14,7 @@
 
 @property (nonatomic, retain) UIColor *baseColor;
 @property (nonatomic, retain) NSArray *gradationViews;
+@property (nonatomic, retain) PaletteColorCircleView *selectedCircleView;
 
 - (id)initWithFrame:(CGRect)frame baseColor:(UIColor *)baseColor;
 

@@ -47,7 +47,22 @@
 - (void)dealloc {
 	self.baseColor = nil;
 	self.gradationViews = nil;
+	self.selectedCircleView = nil;
 	[super dealloc];
+}
+
+- (void)setSelectedCircleView:(PaletteColorCircleView *)newObj {
+	if (_selectedCircleView != newObj) {
+		PaletteColorCircleView *oldObj = _selectedCircleView;
+		if (oldObj) {
+			oldObj.selected = NO;
+		}
+		_selectedCircleView = [newObj retain];
+		if (_selectedCircleView) {
+			_selectedCircleView.selected = YES;
+		}
+		[oldObj release];
+	}
 }
 
 
@@ -62,20 +77,23 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch *touch = [touches anyObject];
-	for (UIView *subview in self.gradationViews) {
-		if ([subview pointInside:[touch locationInView:subview] withEvent:event]) {
-			subview.layer.shadowOpacity = 0.3;
-			subview.layer.shadowOffset = CGSizeMake(0, 4.0);
-		}
-		else {
-			subview.layer.shadowOpacity = 0.0;
+	for (PaletteColorCircleView *subview in self.gradationViews) {
+		BOOL selected = [subview pointInside:[touch locationInView:subview] withEvent:event];
+		if (selected) {
+			self.selectedCircleView = subview;
 		}
 	}
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	NSLog(@"ended");
-	[self _shrink];
+
+	if (self.selectedCircleView) {
+		NSLog(@"selected");
+	}
+	else {
+		[self _shrink];
+	}
 }
 
 #pragma mark -

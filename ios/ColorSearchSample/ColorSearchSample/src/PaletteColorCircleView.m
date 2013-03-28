@@ -16,9 +16,33 @@
     if (self) {
 		CGFloat radius = frame.size.width / 2;
 		self.layer.cornerRadius = radius;
+		self.layer.shadowOffset = CGSizeMake(0, 4.0);
 		self.backgroundColor = color;
+
+		[self addObserver:self forKeyPath:@"selected" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
+
+- (void)dealloc {
+	[self removeObserver:self forKeyPath:@"selected"];
+	[super dealloc];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+					  ofObject:(id)object
+						change:(NSDictionary *)change
+					   context:(void *)context {
+	if ([keyPath isEqualToString:@"selected"]) {
+		if (self.selected) {
+			self.layer.shadowOpacity = 0.3;
+		}
+		else {
+			self.layer.shadowOpacity = 0.0;
+		}
+	}
+}
+
+
 
 @end
