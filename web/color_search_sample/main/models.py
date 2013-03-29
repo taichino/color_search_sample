@@ -14,13 +14,9 @@ class Color(models.Model):
 
     @staticmethod
     def get_nearest(R, G, B):
-        print R, G, B
-        
-        R = int((R + 8) / 16) * 16
-        G = int((G + 8) / 16) * 16
-        B = int((B + 8) / 16) * 16
-
-        print R, G, B
+        R = int((R + 16) / 32) * 32
+        G = int((G + 16) / 32) * 32
+        B = int((B + 16) / 32) * 32
 
         return Color.objects.filter(R=R, G=G, B=B)[0]
 

@@ -7,9 +7,9 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         print 'Preparing color data...'
 
-        for R in range(0, 256 + 1, 16):
-            for G in range(0, 256 + 1, 16):
-                for B in range(0, 256 + 1, 16):
+        for R in range(0, 256 + 1, 32):
+            for G in range(0, 256 + 1, 32):
+                for B in range(0, 256 + 1, 32):
                     try:
                         Color.objects.get(R=R, G=G, B=B)
                     except:
