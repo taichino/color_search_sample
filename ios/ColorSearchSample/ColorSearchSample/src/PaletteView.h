@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PaletteView : UIView
+@interface PaletteView : UIScrollView
 - (void)shrinkAll;
 @end

@@ -17,6 +17,7 @@
 		CGFloat radius = frame.size.width / 2;
 		self.layer.cornerRadius = radius;
 		self.layer.shadowOffset = CGSizeMake(0, 4.0);
+		self.layer.shadowColor = [UIColor whiteColor].CGColor;
 		self.backgroundColor = color;
 		self.color = color;
 

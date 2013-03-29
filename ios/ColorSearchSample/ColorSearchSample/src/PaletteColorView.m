@@ -53,6 +53,7 @@
 	self.gradationViews = nil;
 	self.selectedCircleView = nil;
 	self.animView = nil;
+	self.delegate = nil;
 	[super dealloc];
 }
 
@@ -82,6 +83,7 @@
 #pragma mark -
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self.delegate paletteColorViewTouchesBegan:self];
 	[self _expand];
 }
 
@@ -103,6 +105,7 @@
 	else {
 		[self _shrink];
 	}
+	[self.delegate paletteColorViewTouchesEnded:self];
 }
 
 #pragma mark -

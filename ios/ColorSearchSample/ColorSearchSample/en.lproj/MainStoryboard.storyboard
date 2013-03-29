@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="pEe-Ow-kh5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -8,6 +8,7 @@
         <scene sceneID="11">
             <objects>
                 <navigationController title="Select Color" id="3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="nBV-yz-aax"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -17,17 +18,75 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="12" kind="relationship" relationship="rootViewController" id="19"/>
+                        <segue destination="12" kind="relationship" relationship="rootViewController" id="KW4-7U-UKg"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1" y="64"/>
+            <point key="canvasLocation" x="82" y="-975"/>
         </scene>
-        <!--Palette View Controller - Master-->
+        <!--View Controller - Item 2-->
+        <scene sceneID="vVf-cv-cjm">
+            <objects>
+                <viewController id="erU-rb-2QK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xIR-Ba-MEs">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="s0J-ht-cEb"/>
+                    <navigationItem key="navigationItem" id="c37-N9-wGn"/>
+                    <connections>
+                        <segue destination="Ecv-YZ-jeX" kind="push" id="fQ1-do-dzd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wbH-ns-dyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="565" y="-234"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="MU0-FZ-bSI">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="pEe-Ow-kh5" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="x07-KA-x4T"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="d5t-vl-JMp">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="3" kind="relationship" relationship="viewControllers" id="SGp-bT-kFz"/>
+                        <segue destination="ktj-ot-xgj" kind="relationship" relationship="viewControllers" id="fcE-Zw-IIp"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d0e-XD-Ix8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-463" y="-595"/>
+        </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="Tqe-f0-WED">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="ktj-ot-xgj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Ron-Qy-wOd"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="AlJ-0o-Gn4">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="erU-rb-2QK" kind="relationship" relationship="rootViewController" id="whx-kd-Qbw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="egf-xp-clx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="82" y="-234"/>
+        </scene>
+        <!--Palette View Controller - test1-->
         <scene sceneID="18">
             <objects>
-                <tableViewController storyboardIdentifier="PaletteViewController" title="Master" id="12" customClass="PaletteViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PaletteViewController" title="test1" id="12" customClass="PaletteViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="QsS-fw-os2"/>
                     <navigationItem key="navigationItem" id="36"/>
                     <connections>
                         <outlet property="view" destination="DZS-kV-cU4" id="lFs-Iz-Rcb"/>
@@ -41,14 +100,14 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="459" y="64"/>
+            <point key="canvasLocation" x="565" y="-975"/>
         </scene>
         <!--Photo List View Controller - Title-->
         <scene sceneID="vzt-1y-D3e">
             <objects>
                 <viewController storyboardIdentifier="PhotoListViewController" id="Ecv-YZ-jeX" customClass="PhotoListViewController" sceneMemberID="viewController">
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="KnN-jq-9rE">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </scrollView>
@@ -56,11 +115,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgX-cE-Dwj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="920" y="69"/>
+            <point key="canvasLocation" x="1120" y="-595"/>
         </scene>
     </scenes>
     <classes>
-        <class className="PaletteView" superclassName="UIView">
+        <class className="PaletteView" superclassName="UIScrollView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PaletteView.h"/>
         </class>
         <class className="PaletteViewController" superclassName="UIViewController">
@@ -75,4 +134,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="fQ1-do-dzd"/>
+    </inferredMetricsTieBreakers>
 </document>
