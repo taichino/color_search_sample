@@ -47,11 +47,11 @@
         <scene sceneID="vzt-1y-D3e">
             <objects>
                 <viewController storyboardIdentifier="PhotoListViewController" id="Ecv-YZ-jeX" customClass="PhotoListViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NiF-7w-wbu">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="KnN-jq-9rE">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </scrollView>
                     <navigationItem key="navigationItem" title="Title" id="EcQ-aX-89u"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgX-cE-Dwj" userLabel="First Responder" sceneMemberID="firstResponder"/>

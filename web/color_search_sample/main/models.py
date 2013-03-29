@@ -2,7 +2,6 @@
 
 import os
 
-from django.conf import settings
 from django.db import models
 
 import requests
@@ -15,11 +14,18 @@ class Color(models.Model):
 
     @staticmethod
     def get_nearest(R, G, B):
+        print R, G, B
+        
         R = int((R + 8) / 16) * 16
         G = int((G + 8) / 16) * 16
         B = int((B + 8) / 16) * 16
 
-        return Color.objects.get(R=R, G=G, B=B)
+        print R, G, B
+
+        return Color.objects.filter(R=R, G=G, B=B)[0]
+
+    def __str__(self):
+        return '<Color R={0}, G={1}, B={2}>'.format(self.R, self.G, self.B)
 
 
 class ImageManager(models.Manager):
@@ -29,7 +35,7 @@ class ImageManager(models.Manager):
             raise "ERR status code: %s" % (resp.status_code)
         
         filename = '{0:03d}.jpg'.format(num)
-        path = os.path.join(settings.MEDIA_ROOT, 'img', filename)
+        path = os.path.join('media', 'img', filename)
         with open(path, 'wb') as f:
             for chunk in resp.iter_content():
                 f.write(chunk)
