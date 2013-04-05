@@ -14,20 +14,18 @@
 
 @implementation PaletteViewController
 
-- (id)initWithCoder:(NSCoder *)decoder {
-	self = [super initWithCoder:decoder];
-	if (self) {
-		self.title = @"Select Color";
-		[[NSNotificationCenter defaultCenter]
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	
+	self.title = @"Select Color";
+	[[NSNotificationCenter defaultCenter]
 			addObserverForName:kColorSelectedNotification
 						object:nil
 						 queue:nil
 					usingBlock:^(NSNotification *notif) {
-				[self performSegueWithIdentifier:@"push_photolist"
-										  sender:notif.userInfo[@"color"]];
-			}];
-	}
-	return self;
+			[self performSegueWithIdentifier:@"push_photolist"
+									  sender:notif.userInfo[@"color"]];
+		}];	
 }
 
 - (void)dealloc {

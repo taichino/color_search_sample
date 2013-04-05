@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="82" y="-975"/>
         </scene>
-        <!--View Controller - Item 2-->
+        <!--Moving View Controller - Item 2-->
         <scene sceneID="vVf-cv-cjm">
             <objects>
-                <viewController id="erU-rb-2QK" sceneMemberID="viewController">
+                <viewController id="erU-rb-2QK" customClass="MovingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xIR-Ba-MEs">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -37,7 +37,7 @@
                     <tabBarItem key="tabBarItem" title="Item 2" id="s0J-ht-cEb"/>
                     <navigationItem key="navigationItem" id="c37-N9-wGn"/>
                     <connections>
-                        <segue destination="Ecv-YZ-jeX" kind="push" id="fQ1-do-dzd"/>
+                        <segue destination="Ecv-YZ-jeX" kind="push" identifier="push_photolist_from_mover" id="fQ1-do-dzd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wbH-ns-dyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -49,7 +49,7 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="pEe-Ow-kh5" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="x07-KA-x4T"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="d5t-vl-JMp">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -119,6 +119,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="MovingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MovingViewController.h"/>
+        </class>
         <class className="PaletteView" superclassName="UIScrollView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PaletteView.h"/>
         </class>

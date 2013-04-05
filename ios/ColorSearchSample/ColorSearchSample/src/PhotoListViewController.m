@@ -6,10 +6,11 @@
 //  Copyright (c) 2013 Matsumoto Taichi. All rights reserved.
 //
 
+#import "Common.h"
 #import "PhotoListViewController.h"
 #import "AFNetworking/AFNetworking.h"
 
-@interface PhotoListViewController (Private)
+@interface PhotoListViewController ()
 
 - (NSDictionary *)_colorParams;
 - (void)_load;
@@ -72,14 +73,14 @@
 						h = h * factor;
 						
 						NSString *imageURL = [NSString stringWithFormat:@"http://localhost:8000/%@", path];
-						UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, w, h)];
+						UIImageView *imageView = [[UIImageView alloc] initWithFrame:RECT(x, y, w, h)];
 						NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:imageURL]];
 						[imageView setImageWithURLRequest:request
 										 placeholderImage:nil
 						  success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image) {
 								CGSize newSize = CGSizeMake(w, h);
 								UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
-								[image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+								[image drawInRect:RECT(0, 0, newSize.width, newSize.height)];
 								UIImage *small = UIGraphicsGetImageFromCurrentImageContext();
 								UIGraphicsEndImageContext();
 								

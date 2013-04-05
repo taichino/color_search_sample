@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "PaletteColorCircleView.h"
 
+@class PaletteColorView;
+
+@protocol PaletteColorViewDelegate
+
+@required
+- (void)paletteColorViewTouchesBegan:(PaletteColorView *)pcv;
+- (void)paletteColorViewTouchesEnded:(PaletteColorView *)pcv;
+
+@end
+
 @interface PaletteColorView : UIView
 
 @property (nonatomic, retain) UIColor *baseColor;
@@ -19,13 +29,5 @@
 
 - (id)initWithFrame:(CGRect)frame baseColor:(UIColor *)baseColor;
 - (void)shrink;
-
-@end
-
-@protocol PaletteColorViewDelegate
-
-@required
-- (void)paletteColorViewTouchesBegan:(PaletteColorView *)pcv;
-- (void)paletteColorViewTouchesEnded:(PaletteColorView *)pcv;
 
 @end

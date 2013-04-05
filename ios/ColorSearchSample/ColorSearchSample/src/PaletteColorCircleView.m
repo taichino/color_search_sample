@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Matsumoto Taichi. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
+#import "Common.h"
 #import "PaletteColorCircleView.h"
 
 @implementation PaletteColorCircleView

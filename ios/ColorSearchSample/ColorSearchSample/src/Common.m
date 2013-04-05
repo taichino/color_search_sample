@@ -9,3 +9,4 @@
 #import "Common.h"
 
 NSString * const kColorSelectedNotification = @"kColorSelectedNotification";
+NSString * const kMoverSelectedNotification = @"kMoverSelectedNotification";

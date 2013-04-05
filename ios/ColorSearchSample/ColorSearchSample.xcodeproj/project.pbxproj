@@ -35,6 +35,9 @@
 		6129308A16FCFAE900BEF10E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6129308816FCFAE900BEF10E /* MainStoryboard.storyboard */; };
 		618577FF1703E91F00D51CD0 /* PaletteColorCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 618577FE1703E91F00D51CD0 /* PaletteColorCircleView.m */; };
 		618578021704B31800D51CD0 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 618578011704B31800D51CD0 /* Common.m */; };
+		618578051705FE5600D51CD0 /* MovingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618578041705FE5600D51CD0 /* MovingViewController.m */; };
+		618578081706155F00D51CD0 /* MovingObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 618578071706155F00D51CD0 /* MovingObjectView.m */; };
+		618A2C05170E5CF2000C3929 /* ParticleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 618A2C04170E5CF2000C3929 /* ParticleView.m */; };
 		61CE7BEF17023C020050AE5E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CE7BEE17023C020050AE5E /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +91,12 @@
 		618577FE1703E91F00D51CD0 /* PaletteColorCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaletteColorCircleView.m; path = src/PaletteColorCircleView.m; sourceTree = "<group>"; };
 		618578001704B31800D51CD0 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = src/Common.h; sourceTree = "<group>"; };
 		618578011704B31800D51CD0 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Common.m; path = src/Common.m; sourceTree = "<group>"; };
+		618578031705FE5600D51CD0 /* MovingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovingViewController.h; path = src/MovingViewController.h; sourceTree = "<group>"; };
+		618578041705FE5600D51CD0 /* MovingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovingViewController.m; path = src/MovingViewController.m; sourceTree = "<group>"; };
+		618578061706155F00D51CD0 /* MovingObjectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovingObjectView.h; path = src/MovingObjectView.h; sourceTree = "<group>"; };
+		618578071706155F00D51CD0 /* MovingObjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovingObjectView.m; path = src/MovingObjectView.m; sourceTree = "<group>"; };
+		618A2C03170E5CF2000C3929 /* ParticleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticleView.h; path = src/ParticleView.h; sourceTree = "<group>"; };
+		618A2C04170E5CF2000C3929 /* ParticleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParticleView.m; path = src/ParticleView.m; sourceTree = "<group>"; };
 		61CE7BEE17023C020050AE5E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -127,6 +136,12 @@
 				618577FE1703E91F00D51CD0 /* PaletteColorCircleView.m */,
 				618578001704B31800D51CD0 /* Common.h */,
 				618578011704B31800D51CD0 /* Common.m */,
+				618578031705FE5600D51CD0 /* MovingViewController.h */,
+				618578041705FE5600D51CD0 /* MovingViewController.m */,
+				618578061706155F00D51CD0 /* MovingObjectView.h */,
+				618578071706155F00D51CD0 /* MovingObjectView.m */,
+				618A2C03170E5CF2000C3929 /* ParticleView.h */,
+				618A2C04170E5CF2000C3929 /* ParticleView.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -305,6 +320,9 @@
 				611B5D17170222CE00F93B58 /* UIColor+Gradation.m in Sources */,
 				618577FF1703E91F00D51CD0 /* PaletteColorCircleView.m in Sources */,
 				618578021704B31800D51CD0 /* Common.m in Sources */,
+				618578051705FE5600D51CD0 /* MovingViewController.m in Sources */,
+				618578081706155F00D51CD0 /* MovingObjectView.m in Sources */,
+				618A2C05170E5CF2000C3929 /* ParticleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

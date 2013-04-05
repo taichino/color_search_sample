@@ -6,12 +6,11 @@
 //  Copyright (c) 2013 Matsumoto Taichi. All rights reserved.
 //
 
+#import "Common.h"
 #import "PaletteView.h"
 #import "PaletteColorView.h"
 
 @implementation PaletteView
-
-#define COLOR(R, G, B)    [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1.0]
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
@@ -38,8 +37,8 @@
 			int x = (160 - w) / 2 + ((col % 2) ? 160 : 0);
 			int y = row * 100 + y_margin;
 			PaletteColorView *pcv = [[[PaletteColorView alloc]
-										 initWithFrame:CGRectMake(x, y, w, h)
-											 baseColor:color] autorelease];
+										 initWithFrame:RECT(x, y, w, h)
+											 baseColor:color] _AR_];
 			pcv.delegate = self;
 			[self addSubview:pcv];
 
@@ -57,6 +56,10 @@
 		}
 	}
 }
+
+#pragma mark -
+#pragma mark PaletteColorViewDelegate
+#pragma mark -
 
 - (void)paletteColorViewTouchesBegan:(PaletteColorView *)pcv {
 	self.scrollEnabled = NO;

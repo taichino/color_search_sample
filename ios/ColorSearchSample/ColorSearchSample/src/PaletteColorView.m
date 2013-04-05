@@ -6,13 +6,12 @@
 //  Copyright (c) 2013 Matsumoto Taichi. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
 #import "Common.h"
 #import "PaletteColorView.h"
 #import "PaletteColorCircleView.h"
 #import "UIColor+Gradation.h"
 
-@interface PaletteColorView (Private)
+@interface PaletteColorView ()
 
 - (void)_expand;
 - (void)_shrink;
@@ -31,14 +30,14 @@
 		NSArray *gradationColors = [self.baseColor gradationColors];
 		PaletteColorCircleView *centerCircle =
 			[[[PaletteColorCircleView alloc] initWithFrame:self.bounds
-													 color:self.baseColor] autorelease];
+													 color:self.baseColor] _AR_];
 		[self addSubview:centerCircle];
 		[gradationViews addObject:centerCircle];
 			
 		for (UIColor *color in gradationColors) {
 			PaletteColorCircleView *view =
 				[[[PaletteColorCircleView alloc] initWithFrame:self.bounds
-														 color:color] autorelease];
+														 color:color] _AR_];
 			[self insertSubview:view belowSubview:centerCircle];
 			[gradationViews addObject:view];
 		}
@@ -125,7 +124,7 @@
 - (void)_go {
 	if (!self.selectedCircleView) return;
 
-	self.animView = [[[UIView alloc] initWithFrame:self.selectedCircleView.frame] autorelease];
+	self.animView = [[[UIView alloc] initWithFrame:self.selectedCircleView.frame] _AR_];
 	self.animView.backgroundColor = self.selectedCircleView.color;
 	[self addSubview:self.animView];
 
@@ -143,7 +142,7 @@
 	CAAnimationGroup *group = [CAAnimationGroup animation];
 	group.duration = 0.3;
 	group.delegate = self;
-	[group setAnimations:[NSArray arrayWithObjects:opacAnimation, sizeAnimation, nil]];
+	[group setAnimations:@[opacAnimation, sizeAnimation]];
 	
 	[self.animView.layer addAnimation:group forKey:nil];
 }
