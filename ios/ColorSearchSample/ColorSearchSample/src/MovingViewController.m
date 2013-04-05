@@ -47,6 +47,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIColor *)color {
 	PhotoListViewController *vc = segue.destinationViewController;
+	CIColor *cicolor = [[[CIColor alloc] initWithColor:color] _AR_];
+	vc.title = [NSString stringWithFormat:@"%.2f %.2f %.2f", cicolor.red, cicolor.green, cicolor.blue];
 	vc.targetColor = color;
 }
 

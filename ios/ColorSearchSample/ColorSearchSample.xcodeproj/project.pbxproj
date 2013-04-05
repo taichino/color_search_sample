@@ -38,6 +38,7 @@
 		618578051705FE5600D51CD0 /* MovingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618578041705FE5600D51CD0 /* MovingViewController.m */; };
 		618578081706155F00D51CD0 /* MovingObjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 618578071706155F00D51CD0 /* MovingObjectView.m */; };
 		618A2C05170E5CF2000C3929 /* ParticleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 618A2C04170E5CF2000C3929 /* ParticleView.m */; };
+		618A2C07170E6DC8000C3929 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 618A2C06170E6DC8000C3929 /* CoreImage.framework */; };
 		61CE7BEF17023C020050AE5E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CE7BEE17023C020050AE5E /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		618578071706155F00D51CD0 /* MovingObjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovingObjectView.m; path = src/MovingObjectView.m; sourceTree = "<group>"; };
 		618A2C03170E5CF2000C3929 /* ParticleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticleView.h; path = src/ParticleView.h; sourceTree = "<group>"; };
 		618A2C04170E5CF2000C3929 /* ParticleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParticleView.m; path = src/ParticleView.m; sourceTree = "<group>"; };
+		618A2C06170E6DC8000C3929 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		61CE7BEE17023C020050AE5E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				618A2C07170E6DC8000C3929 /* CoreImage.framework in Frameworks */,
 				61CE7BEF17023C020050AE5E /* QuartzCore.framework in Frameworks */,
 				611B5D0E16FD12AD00F93B58 /* MobileCoreServices.framework in Frameworks */,
 				611B5D0C16FD128900F93B58 /* SystemConfiguration.framework in Frameworks */,
@@ -201,6 +204,7 @@
 		6129306F16FCFAE900BEF10E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				618A2C06170E6DC8000C3929 /* CoreImage.framework */,
 				61CE7BEE17023C020050AE5E /* QuartzCore.framework */,
 				611B5D0D16FD12AD00F93B58 /* MobileCoreServices.framework */,
 				611B5D0B16FD128900F93B58 /* SystemConfiguration.framework */,
